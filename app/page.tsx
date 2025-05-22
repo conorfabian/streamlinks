@@ -27,9 +27,9 @@ export default function Home() {
               />
             </form>
           </div>
-          <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-gray-800">
-            Submit Link
-          </Button>
+          <a href="submit">
+            <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-gray-800">Submit Link</Button>
+          </a>
         </div>
       </header>
 
@@ -41,16 +41,18 @@ export default function Home() {
             A curated collection of links to free streaming platforms for movies, shows, anime, books, and sports.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button className="bg-gray-100 hover:bg-white text-gray-900">Browse Categories</Button>
-            <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
-              Most Popular
-            </Button>
+            <a href="#categories">
+              <Button className="bg-gray-100 hover:bg-white text-gray-900">Browse Categories</Button>
+            </a>
+            <a href="#popular">
+              <Button className="bg-gray-100 hover:bg-white text-gray-900">Most Popular</Button>
+            </a>
           </div>
         </div>
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 bg-gray-950">
+      <section id="categories" className="py-16 bg-gray-950">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold text-white mb-8 text-center">Categories</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -63,7 +65,7 @@ export default function Home() {
               href="/category/movies-shows"
             />
             <CategoryCard
-              title="Live TV"
+              title="Sports"
               count={9}
               icon="tv"
               color="bg-gray-800"
@@ -91,7 +93,7 @@ export default function Home() {
       </section>
 
       {/* Popular Links Section */}
-      <section className="py-16 bg-gray-900 border-t border-gray-800">
+      <section id="popular" className="py-16 bg-gray-900 border-t border-gray-800">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold text-white mb-8 text-center">Popular Streaming Sites</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -121,9 +123,9 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
-              View All Sites
-            </Button>
+            <a href="#categories">
+            <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">View All Sites</Button>
+            </a>
           </div>
         </div>
       </section>

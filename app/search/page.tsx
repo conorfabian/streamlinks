@@ -138,7 +138,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
                 </li>
                 <li>
                   <Link href="/category/live-tv" className="hover:text-white">
-                    Live TV
+                    Sports
                   </Link>
                 </li>
                 <li>
@@ -216,7 +216,7 @@ function getCategoryColor(category: string) {
       return "bg-red-900/50 text-red-400"
     case "movies & shows":
       return "bg-blue-900/50 text-blue-400"
-    case "live tv":
+    case "sports":
       return "bg-green-900/50 text-green-400"
     case "books":
       return "bg-purple-900/50 text-purple-400"

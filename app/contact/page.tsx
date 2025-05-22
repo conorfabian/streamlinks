@@ -184,7 +184,7 @@ export default function ContactPage() {
                 </li>
                 <li>
                   <Link href="/category/live-tv" className="hover:text-white">
-                    Live TV
+                    Sports
                   </Link>
                 </li>
               </ul>

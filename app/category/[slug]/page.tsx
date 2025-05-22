@@ -150,7 +150,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 </li>
                 <li>
                   <Link href="/category/live-tv" className="hover:text-white">
-                    Live TV
+                    Sports
                   </Link>
                 </li>
                 <li>
@@ -235,7 +235,7 @@ function getCategoryInfo(slug: string) {
       textColor: "text-blue-400",
     },
     "live-tv": {
-      title: "Live TV",
+      title: "Sports",
       bgColor: "bg-gray-900 border-b border-gray-800",
       textColor: "text-green-400",
     },
