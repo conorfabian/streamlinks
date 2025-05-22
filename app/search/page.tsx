@@ -1,17 +1,21 @@
-import { ArrowLeft, ExternalLink, Search } from "lucide-react"
+import { ArrowLeft, ExternalLink, Search, Film, Tv } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { searchSites } from "@/lib/site-data"
+import { ContentSearchClient } from "@/components/content-search-client"
+import { AutocompleteSearch } from "@/components/autocomplete-search"
 
 interface SearchPageProps {
-  searchParams: { q?: string }
+  searchParams: Promise<{ q?: string; type?: string }>
 }
 
-export default function SearchPage({ searchParams }: SearchPageProps) {
-  const query = searchParams.q || ""
-  const searchResults = searchSites(query)
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const params = await searchParams
+  const query = params.q || ""
+  const searchType = params.type || "sites"
+  const siteResults = searchSites(query)
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-200">
@@ -21,18 +25,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
           <Link href="/" className="text-2xl font-semibold text-white">
             StreamLinks
           </Link>
-          <div className="relative w-full max-w-md mx-4">
-            <form action="/search" method="GET">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
-              <Input
-                type="search"
-                name="q"
-                defaultValue={query}
-                placeholder="Search for streaming sites..."
-                className="pl-10 bg-gray-800 border-0 focus-visible:ring-gray-700 text-gray-200 placeholder:text-gray-500"
-              />
-            </form>
-          </div>
+          <AutocompleteSearch initialQuery={query} initialType={searchType} />
           <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-gray-800">
             Submit Link
           </Button>
@@ -47,75 +40,81 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
         </Link>
 
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Search Results</h1>
-          <p className="text-gray-400 mb-8">
-            {searchResults.length > 0
-              ? `Found ${searchResults.length} results for "${query}"`
-              : `No results found for "${query}"`}
-          </p>
-
-          {searchResults.length === 0 ? (
-            <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-8 text-center">
-              <h2 className="text-xl font-medium text-white mb-2">No matching sites found</h2>
-              <p className="text-gray-400 mb-4">
-                We couldn't find any streaming sites matching your search. Try different keywords or browse by category.
-              </p>
-              <div className="flex justify-center gap-4 mt-6">
-                <Button asChild className="bg-gray-100 hover:bg-white text-gray-900">
-                  <Link href="/">Browse All Categories</Link>
-                </Button>
-                <Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800">
-                  <Link href="/submit">Submit a Site</Link>
-                </Button>
-              </div>
-            </div>
+          {searchType === "content" ? (
+            <ContentSearchClient query={query} />
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {searchResults.map((site, index) => (
-                <Link key={index} href={site.url} target="_blank" rel="noopener noreferrer">
-                  <Card
-                    className="bg-gray-800 border-gray-700 overflow-hidden hover:shadow-md hover:border-gray-600 transition-all h-full flex flex-col"
-                  >
-                    <CardHeader className="pb-2">
-                      <div className="flex justify-between items-start">
-                        <CardTitle className="text-xl text-white">{site.name}</CardTitle>
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(site.category)}`}>
-                          {site.category}
-                        </span>
-                      </div>
-                      <CardDescription className="text-gray-400">{site.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="pb-2 flex-grow">
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {site.features.map((feature, i) => (
-                          <span key={i} className="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex items-center space-x-4 text-sm text-gray-400">
-                        <div className="flex items-center">
-                          <span className="text-yellow-500 mr-1">★</span>
-                          <span>{site.rating}/5</span>
-                        </div>
-                        <div>Updated: {site.lastUpdated}</div>
-                      </div>
-                    </CardContent>
-                    <CardFooter className="pt-2 flex justify-between">
-                      <div className="text-sm text-gray-400">
-                        {site.adLevel === "Low" ? (
-                          <span className="text-green-400">Low Ads</span>
-                        ) : site.adLevel === "Medium" ? (
-                          <span className="text-yellow-400">Medium Ads</span>
-                        ) : (
-                          <span className="text-red-400">High Ads</span>
-                        )}
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </Link>
-              ))}
-            </div>
+            <>
+              <h1 className="text-3xl font-bold text-white mb-2">Site Search Results</h1>
+              <p className="text-gray-400 mb-8">
+                {siteResults.length > 0
+                  ? `Found ${siteResults.length} streaming sites for "${query}"`
+                  : `No streaming sites found for "${query}"`}
+              </p>
+
+              {siteResults.length === 0 ? (
+                <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-8 text-center">
+                  <h2 className="text-xl font-medium text-white mb-2">No matching sites found</h2>
+                  <p className="text-gray-400 mb-4">
+                    We couldn't find any streaming sites matching your search. Try different keywords or browse by category.
+                  </p>
+                  <div className="flex justify-center gap-4 mt-6">
+                    <Button asChild className="bg-gray-100 hover:bg-white text-gray-900">
+                      <Link href="/">Browse All Categories</Link>
+                    </Button>
+                    <Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800">
+                      <Link href="/submit">Submit a Site</Link>
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {siteResults.map((site, index) => (
+                    <Link key={index} href={site.url} target="_blank" rel="noopener noreferrer">
+                      <Card
+                        className="bg-gray-800 border-gray-700 overflow-hidden hover:shadow-md hover:border-gray-600 transition-all h-full flex flex-col"
+                      >
+                        <CardHeader className="pb-2">
+                          <div className="flex justify-between items-start">
+                            <CardTitle className="text-xl text-white">{site.name}</CardTitle>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(site.category)}`}>
+                              {site.category}
+                            </span>
+                          </div>
+                          <CardDescription className="text-gray-400">{site.description}</CardDescription>
+                        </CardHeader>
+                        <CardContent className="pb-2 flex-grow">
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {site.features.map((feature, i) => (
+                              <span key={i} className="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">
+                                {feature}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="flex items-center space-x-4 text-sm text-gray-400">
+                            <div className="flex items-center">
+                              <span className="text-yellow-500 mr-1">★</span>
+                              <span>{site.rating}/5</span>
+                            </div>
+                            <div>Updated: {site.lastUpdated}</div>
+                          </div>
+                        </CardContent>
+                        <CardFooter className="pt-2 flex justify-between">
+                          <div className="text-sm text-gray-400">
+                            {site.adLevel === "Low" ? (
+                              <span className="text-green-400">Low Ads</span>
+                            ) : site.adLevel === "Medium" ? (
+                              <span className="text-yellow-400">Medium Ads</span>
+                            ) : (
+                              <span className="text-red-400">High Ads</span>
+                            )}
+                          </div>
+                        </CardFooter>
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>

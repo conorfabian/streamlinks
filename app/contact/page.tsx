@@ -8,25 +8,25 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
+      <header className="sticky top-0 z-10 bg-gray-800/80 backdrop-blur-md border-b border-gray-700 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-semibold text-gray-900">
+          <Link href="/" className="text-2xl font-semibold text-white">
             StreamLinks
           </Link>
           <div className="hidden md:block">
             <nav className="flex items-center space-x-6">
-              <Link href="/" className="text-gray-600 hover:text-gray-900">
+              <Link href="/" className="text-gray-300 hover:text-white">
                 Home
               </Link>
-              <Link href="/about" className="text-gray-600 hover:text-gray-900">
+              <Link href="/about" className="text-gray-300 hover:text-white">
                 About
               </Link>
-              <Link href="/faq" className="text-gray-600 hover:text-gray-900">
+              <Link href="/faq" className="text-gray-300 hover:text-white">
                 FAQ
               </Link>
-              <Link href="/contact" className="text-gray-600 hover:text-gray-900 font-medium">
+              <Link href="/contact" className="text-gray-300 hover:text-white font-medium">
                 Contact
               </Link>
             </nav>
@@ -36,80 +36,80 @@ export default function ContactPage() {
 
       {/* Contact Content */}
       <div className="container mx-auto px-4 py-12">
-        <Link href="/" className="inline-flex items-center text-gray-600 mb-6 hover:text-gray-900">
+        <Link href="/" className="inline-flex items-center text-gray-300 mb-6 hover:text-white">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to home
         </Link>
 
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Contact Us</h1>
-          <p className="text-gray-600 mb-8">Have questions, suggestions, or feedback? We'd love to hear from you!</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Contact Us</h1>
+          <p className="text-gray-300 mb-8">Have questions, suggestions, or feedback? We'd love to hear from you!</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <Card className="bg-blue-50 border-blue-100">
+            <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-2">
-                <CardTitle className="text-blue-800">Report a Site</CardTitle>
+                <CardTitle className="text-blue-400">Report a Site</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-blue-700 text-sm">
+                <p className="text-gray-300 text-sm">
                   Let us know if you find a broken link or a site that's no longer working.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-green-50 border-green-100">
+            <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-2">
-                <CardTitle className="text-green-800">Suggest a Feature</CardTitle>
+                <CardTitle className="text-green-400">Suggest a Feature</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-green-700 text-sm">
+                <p className="text-gray-300 text-sm">
                   Have an idea to improve StreamLinks? We're always looking for ways to enhance our directory.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-50 border-purple-100">
+            <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-2">
-                <CardTitle className="text-purple-800">General Inquiry</CardTitle>
+                <CardTitle className="text-purple-400">General Inquiry</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-purple-700 text-sm">For any other questions or comments about our service.</p>
+                <p className="text-gray-300 text-sm">For any other questions or comments about our service.</p>
               </CardContent>
             </Card>
           </div>
 
-          <Card>
+          <Card className="bg-gray-800 border-gray-700">
             <CardHeader>
-              <CardTitle>Contact Form</CardTitle>
-              <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
+              <CardTitle className="text-white">Contact Form</CardTitle>
+              <CardDescription className="text-gray-300">Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
             </CardHeader>
             <CardContent>
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                       Name *
                     </label>
-                    <Input id="name" placeholder="Your name" required />
+                    <Input id="name" placeholder="Your name" required className="bg-gray-700 border-gray-600 text-white" />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
                       Email *
                     </label>
-                    <Input id="email" type="email" placeholder="your.email@example.com" required />
+                    <Input id="email" type="email" placeholder="your.email@example.com" required className="bg-gray-700 border-gray-600 text-white" />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-1">
                     Subject *
                   </label>
                   <Select>
-                    <SelectTrigger>
+                    <SelectTrigger className="bg-gray-700 border-gray-600 text-white">
                       <SelectValue placeholder="Select a subject" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-gray-800 border-gray-700">
                       <SelectItem value="report">Report a Broken Site</SelectItem>
                       <SelectItem value="suggestion">Suggestion</SelectItem>
                       <SelectItem value="feedback">Feedback</SelectItem>
@@ -120,20 +120,20 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="site-name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="site-name" className="block text-sm font-medium text-gray-300 mb-1">
                     Site Name (if reporting a broken site)
                   </label>
-                  <Input id="site-name" placeholder="e.g., AnimeHub, MovieStream" />
+                  <Input id="site-name" placeholder="e.g., AnimeHub, MovieStream" className="bg-gray-700 border-gray-600 text-white" />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
                     Message *
                   </label>
                   <Textarea
                     id="message"
                     placeholder="Please provide details about your inquiry..."
-                    className="h-32"
+                    className="h-32 bg-gray-700 border-gray-600 text-white"
                     required
                   />
                 </div>
@@ -145,11 +145,11 @@ export default function ContactPage() {
           </Card>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-2xl font-semibold text-white mb-4">Frequently Asked Questions</h2>
+            <p className="text-gray-300 mb-4">
               Before contacting us, you might find the answer to your question in our FAQ section.
             </p>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white">
               <Link href="/faq">View FAQ</Link>
             </Button>
           </div>

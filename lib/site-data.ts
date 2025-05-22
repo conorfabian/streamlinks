@@ -1,4 +1,19 @@
 // Site data organized by category
+
+// Enhanced site interface with search capabilities
+export interface StreamingSite {
+  name: string;
+  description: string;
+  features: string[];
+  rating: number;
+  status: string;
+  lastUpdated: string;
+  adLevel: string;
+  url: string;
+  searchUrl?: string; // Direct search URL pattern (use {query} as placeholder)
+  hasSearch: boolean; // Whether the site has internal search
+}
+
 export const siteData = {
   "movies-shows": [
     {
@@ -10,6 +25,8 @@ export const siteData = {
       lastUpdated: "2 days ago",
       adLevel: "Medium",
       url: "https://www.1shows.live/",
+      searchUrl: "https://www.1shows.live/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "RgShows",
@@ -20,6 +37,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Medium",
       url: "https://www.rgshows.me/",
+      searchUrl: "https://www.rgshows.me/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "FlickyStream",
@@ -30,6 +49,8 @@ export const siteData = {
       lastUpdated: "1 day ago",
       adLevel: "Low",
       url: "https://flickystream.com/",
+      searchUrl: "https://flickystream.com/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "P-Stream",
@@ -40,6 +61,8 @@ export const siteData = {
       lastUpdated: "2 days ago",
       adLevel: "Medium",
       url: "https://pstream.org/",
+      searchUrl: "https://pstream.org/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "CatFlix",
@@ -50,6 +73,8 @@ export const siteData = {
       lastUpdated: "1 day ago",
       adLevel: "Low",
       url: "https://catflix.su/home",
+      searchUrl: "https://catflix.su/search/{query}",
+      hasSearch: true,
     },
     {
       name: "CinemaDeck",
@@ -60,6 +85,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Low",
       url: "https://cinemadeck.com/",
+      searchUrl: "https://cinemadeck.com/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "PopcornMovies",
@@ -70,6 +97,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://www.popcornmovies.to/home",
+      searchUrl: "https://www.popcornmovies.to/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "Nepu",
@@ -80,6 +109,8 @@ export const siteData = {
       lastUpdated: "5 days ago",
       adLevel: "Medium",
       url: "https://nepu.to/",
+      searchUrl: "https://nepu.to/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "BroFlix",
@@ -90,6 +121,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Medium",
       url: "https://broflix.cc/",
+      searchUrl: "https://broflix.cc/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "Freek",
@@ -100,6 +133,8 @@ export const siteData = {
       lastUpdated: "6 days ago",
       adLevel: "High",
       url: "https://freek.to/",
+      searchUrl: "https://freek.to/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "Cineby",
@@ -110,6 +145,8 @@ export const siteData = {
       lastUpdated: "1 week ago",
       adLevel: "Medium",
       url: "https://www.cineby.ru/",
+      searchUrl: "https://www.cineby.ru/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "RiveStream",
@@ -120,6 +157,8 @@ export const siteData = {
       lastUpdated: "2 days ago",
       adLevel: "Low",
       url: "https://rivestream.org/",
+      searchUrl: "https://rivestream.org/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "FMovies",
@@ -130,6 +169,8 @@ export const siteData = {
       lastUpdated: "1 day ago",
       adLevel: "Medium",
       url: "https://fmovies-hd.to/home/",
+      searchUrl: "https://fmovies-hd.to/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "Xprime",
@@ -140,6 +181,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Medium",
       url: "https://xprime.tv/",
+      searchUrl: "https://xprime.tv/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "BFlix",
@@ -150,6 +193,8 @@ export const siteData = {
       lastUpdated: "2 days ago",
       adLevel: "Low",
       url: "https://bflix.sh/home/",
+      searchUrl: "https://bflix.sh/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "Hexa",
@@ -160,6 +205,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://hexa.watch/",
+      searchUrl: "https://hexa.watch/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "CorsFlux",
@@ -170,6 +217,8 @@ export const siteData = {
       lastUpdated: "5 days ago",
       adLevel: "Medium",
       url: "https://corsflix.net/",
+      searchUrl: "https://corsflix.net/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "Willow",
@@ -180,6 +229,8 @@ export const siteData = {
       lastUpdated: "6 days ago",
       adLevel: "Medium",
       url: "https://willow.arlen.icu/",
+      searchUrl: "https://willow.arlen.icu/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "StreamFlix",
@@ -190,6 +241,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Medium",
       url: "https://watch.streamflix.one/",
+      searchUrl: "https://watch.streamflix.one/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "456Movie",
@@ -200,6 +253,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://456movie.net/",
+      searchUrl: "https://456movie.net/search?q={query}",
+      hasSearch: true,
     },
   ],
   anime: [
@@ -212,6 +267,8 @@ export const siteData = {
       lastUpdated: "1 day ago",
       adLevel: "Low",
       url: "https://www.miruro.tv",
+      searchUrl: "https://www.miruro.tv/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "HiAnime",
@@ -222,6 +279,8 @@ export const siteData = {
       lastUpdated: "2 days ago",
       adLevel: "Low",
       url: "https://hianime.to/home",
+      searchUrl: "https://hianime.to/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "Enma",
@@ -232,6 +291,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Low",
       url: "https://www.enma.lol",
+      searchUrl: "https://www.enma.lol/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "AniWatch",
@@ -242,6 +303,8 @@ export const siteData = {
       lastUpdated: "1 day ago",
       adLevel: "Low",
       url: "https://aniwatchtv.to/home",
+      searchUrl: "https://aniwatchtv.to/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "Animag",
@@ -252,6 +315,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://animag.to/",
+      searchUrl: "https://animag.to/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "Kaido",
@@ -262,6 +327,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Low",
       url: "https://kaido.to/home",
+      searchUrl: "https://kaido.to/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "AniCrush",
@@ -272,6 +339,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://anicrush.to/home",
+      searchUrl: "https://anicrush.to/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "RiveKun",
@@ -282,6 +351,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Low",
       url: "https://rivekun.rivestream.org/",
+      searchUrl: "https://rivekun.rivestream.org/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "KickAssAnime",
@@ -292,6 +363,8 @@ export const siteData = {
       lastUpdated: "5 days ago",
       adLevel: "Medium",
       url: "https://kickassanime.am/anime",
+      searchUrl: "https://kickassanime.am/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "AnimeKai",
@@ -302,6 +375,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://animekai.to/home",
+      searchUrl: "https://animekai.to/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "AnimeZ",
@@ -312,6 +387,8 @@ export const siteData = {
       lastUpdated: "5 days ago",
       adLevel: "Medium",
       url: "https://animez.org/",
+      searchUrl: "https://animez.org/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "Hikari",
@@ -322,6 +399,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Low",
       url: "https://watch.hikaritv.xyz/",
+      searchUrl: "https://watch.hikaritv.xyz/search?q={query}",
+      hasSearch: true,
     },
   ],
   books: [
@@ -334,6 +413,8 @@ export const siteData = {
       lastUpdated: "1 day ago",
       adLevel: "Low",
       url: "https://mangadex.org/",
+      searchUrl: "https://mangadex.org/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "Comick",
@@ -344,6 +425,8 @@ export const siteData = {
       lastUpdated: "2 days ago",
       adLevel: "Low",
       url: "https://comick.io/home2",
+      searchUrl: "https://comick.io/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "MangaReader",
@@ -354,6 +437,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Medium",
       url: "https://mangareader.to/home",
+      searchUrl: "https://mangareader.to/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "Mangago",
@@ -364,6 +449,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://mangago.me/",
+      searchUrl: "https://mangago.me/search/all?f=1&name={query}",
+      hasSearch: true,
     },
     {
       name: "MangaFire",
@@ -374,6 +461,8 @@ export const siteData = {
       lastUpdated: "2 days ago",
       adLevel: "Medium",
       url: "https://mangafire.to/home",
+      searchUrl: "https://mangafire.to/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "AllManga",
@@ -384,6 +473,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Medium",
       url: "https://allmanga.to/manga?cty=ALL",
+      searchUrl: "https://allmanga.to/search?keyword={query}",
+      hasSearch: true,
     },
     {
       name: "MangaKakalot",
@@ -394,6 +485,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://mangakakalot.com/",
+      searchUrl: "https://mangakakalot.com/search/story/{query}",
+      hasSearch: true,
     },
     {
       name: "AsuraComic",
@@ -404,6 +497,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Low",
       url: "https://asuracomic.net/",
+      searchUrl: "https://asuracomic.net/?s={query}",
+      hasSearch: true,
     },
     {
       name: "MangaHub",
@@ -414,6 +509,8 @@ export const siteData = {
       lastUpdated: "5 days ago",
       adLevel: "Medium",
       url: "https://mangahub.io/",
+      searchUrl: "https://mangahub.io/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "MangaPark",
@@ -424,6 +521,8 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://mangapark.io/",
+      searchUrl: "https://mangapark.io/search?word={query}",
+      hasSearch: true,
     },
     {
       name: "WeebCentral",
@@ -434,6 +533,8 @@ export const siteData = {
       lastUpdated: "6 days ago",
       adLevel: "Medium",
       url: "https://weebcentral.com/",
+      searchUrl: "https://weebcentral.com/search?q={query}",
+      hasSearch: true,
     },
     {
       name: "MangaKatana",
@@ -444,6 +545,8 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Low",
       url: "https://mangakatana.com/",
+      searchUrl: "https://mangakatana.com/search?search={query}",
+      hasSearch: true,
     },
   ],
   "live-tv": [
@@ -456,6 +559,7 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Medium",
       url: "https://thetvapp.to",
+      hasSearch: false,
     },
     {
       name: "TV247",
@@ -466,6 +570,7 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Medium",
       url: "https://tv247.us/all-channels/",
+      hasSearch: false,
     },
     {
       name: "PublicIPTV",
@@ -476,6 +581,7 @@ export const siteData = {
       lastUpdated: "5 days ago",
       adLevel: "Medium",
       url: "https://publiciptv.com/",
+      hasSearch: false,
     },
     {
       name: "Sport+",
@@ -486,6 +592,7 @@ export const siteData = {
       lastUpdated: "2 days ago",
       adLevel: "Medium",
       url: "https://en12.sportplus.live/",
+      hasSearch: false,
     },
     {
       name: "StreamEast",
@@ -496,6 +603,7 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Medium",
       url: "https://the.streameast.app/v86",
+      hasSearch: false,
     },
     {
       name: "SportSurge",
@@ -506,6 +614,7 @@ export const siteData = {
       lastUpdated: "4 days ago",
       adLevel: "Low",
       url: "https://v2.sportsurge.net/",
+      hasSearch: false,
     },
     {
       name: "TV Garden",
@@ -516,6 +625,7 @@ export const siteData = {
       lastUpdated: "5 days ago",
       adLevel: "Medium",
       url: "https://tv.garden/",
+      hasSearch: false,
     },
     {
       name: "TOTV",
@@ -526,6 +636,7 @@ export const siteData = {
       lastUpdated: "6 days ago",
       adLevel: "Medium",
       url: "http://totv.org/tv/usa/",
+      hasSearch: false,
     },
     {
       name: "RiveStream LiveSports",
@@ -536,34 +647,29 @@ export const siteData = {
       lastUpdated: "3 days ago",
       adLevel: "Low",
       url: "https://rivestream.org/livesports/",
+      hasSearch: false,
     },
   ],
 }
 
+// Get all sites across all categories
+export function getAllSites(): (StreamingSite & { category: string })[] {
+  return [
+    ...siteData["movies-shows"].map((site) => ({ ...site, category: "Movies & Shows" })),
+    ...siteData.anime.map((site) => ({ ...site, category: "Anime" })),
+    ...siteData.books.map((site) => ({ ...site, category: "Books" })),
+    ...siteData["live-tv"].map((site) => ({ ...site, category: "Live TV" })),
+  ]
+}
+
 // Get popular sites across all categories
 export function getPopularSites(count = 6) {
-  const allSites = [...siteData["movies-shows"], ...siteData.anime, ...siteData.books, ...siteData["live-tv"]]
+  const allSites = getAllSites()
 
   // Sort by rating and return the top ones
   return allSites
     .sort((a, b) => b.rating - a.rating)
     .slice(0, count)
-    .map((site) => {
-      // Determine category
-      let category = "Movies & Shows"
-      if (siteData.anime.some((s) => s.name === site.name)) {
-        category = "Anime"
-      } else if (siteData.books.some((s) => s.name === site.name)) {
-        category = "Books"
-      } else if (siteData["live-tv"].some((s) => s.name === site.name)) {
-        category = "Live TV"
-      }
-
-      return {
-        ...site,
-        category,
-      }
-    })
 }
 
 // Get sites by category
@@ -587,12 +693,7 @@ export function getSitesByCategory(category: string) {
 export function searchSites(query: string) {
   if (!query) return []
 
-  const allSites = [
-    ...siteData["movies-shows"].map((site) => ({ ...site, category: "Movies & Shows" })),
-    ...siteData.anime.map((site) => ({ ...site, category: "Anime" })),
-    ...siteData.books.map((site) => ({ ...site, category: "Books" })),
-    ...siteData["live-tv"].map((site) => ({ ...site, category: "Live TV" })),
-  ]
+  const allSites = getAllSites()
 
   // Case-insensitive search
   const lowerQuery = query.toLowerCase()
@@ -603,4 +704,14 @@ export function searchSites(query: string) {
       site.description.toLowerCase().includes(lowerQuery) ||
       site.features.some((feature) => feature.toLowerCase().includes(lowerQuery)),
   )
+}
+
+// Generate direct search URL for a site and content title
+export function generateDirectSearchUrl(site: StreamingSite, title: string): string {
+  if (!site.searchUrl || !site.hasSearch) {
+    return site.url
+  }
+  
+  const encodedTitle = encodeURIComponent(title.toLowerCase())
+  return site.searchUrl.replace('{query}', encodedTitle)
 }

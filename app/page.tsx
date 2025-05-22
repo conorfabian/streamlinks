@@ -1,9 +1,8 @@
-import { Search } from "lucide-react"
 import Link from "next/link"
 import CategoryCard from "@/components/category-card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { getPopularSites } from "@/lib/site-data"
+import { AutocompleteSearch } from "@/components/autocomplete-search"
 
 export default function Home() {
   const popularSites = getPopularSites(6)
@@ -16,17 +15,7 @@ export default function Home() {
           <Link href="/" className="text-2xl font-semibold text-white">
             StreamLinks
           </Link>
-          <div className="relative w-full max-w-md mx-4">
-            <form action="/search" method="GET">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
-              <Input
-                type="search"
-                name="q"
-                placeholder="Search for streaming sites..."
-                className="pl-10 bg-gray-800 border-0 focus-visible:ring-gray-700 text-gray-200 placeholder:text-gray-500"
-              />
-            </form>
-          </div>
+          <AutocompleteSearch className="max-w-md" />
           <a href="submit">
             <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-gray-800">Submit Link</Button>
           </a>
