@@ -18,11 +18,3 @@ The main goal of this project is to create a centralized, easy-to-use platform f
 *   React
 *   TypeScript
 *   Tailwind CSS
-
-## Getting Started
-
-(Instructions on how to set up and run the project locally will be added here)
-
-## Contributing
-
-(Information on how to contribute to the project will be added here) 
