@@ -35,10 +35,11 @@ const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
 
 // Get TMDB API key from environment variables
-function getTMDBApiKey(): string {
+function getTMDBApiKey(): string | null {
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || process.env.TMDB_API_KEY
   if (!apiKey) {
-    throw new Error('TMDB API key not found. Please set NEXT_PUBLIC_TMDB_API_KEY or TMDB_API_KEY environment variable.')
+    console.warn('TMDB API key not found. Using fallback search only.')
+    return null
   }
   return apiKey
 }
@@ -47,6 +48,11 @@ function getTMDBApiKey(): string {
 async function searchTMDB(query: string): Promise<ContentItem[]> {
   try {
     const apiKey = getTMDBApiKey()
+    if (!apiKey) {
+      console.log('No TMDB API key available, skipping TMDB search')
+      return []
+    }
+    
     const encodedQuery = encodeURIComponent(query)
     
     // Search both movies and TV shows
