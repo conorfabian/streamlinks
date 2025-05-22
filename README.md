@@ -1,4 +1,4 @@
-# [StreamLinks] (https://streamlinks.vercel.app/)
+# [StreamLinks](https://streamlinks.vercel.app/)
 
 StreamLinks is a website that provides a curated collection of links to websites offering free streaming content, books, and more.
 
