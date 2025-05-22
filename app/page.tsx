@@ -42,9 +42,11 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button className="bg-gray-100 hover:bg-white text-gray-900">Browse Categories</Button>
-            <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
-              Most Popular
-            </Button>
+            <Link href="#popular-links">
+              <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
+                Most Popular
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -91,7 +93,7 @@ export default function Home() {
       </section>
 
       {/* Popular Links Section */}
-      <section className="py-16 bg-gray-900 border-t border-gray-800">
+      <section id="popular-links" className="py-16 bg-gray-900 border-t border-gray-800">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold text-white mb-8 text-center">Popular Streaming Sites</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
